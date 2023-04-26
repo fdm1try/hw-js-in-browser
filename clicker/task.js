@@ -35,7 +35,6 @@ const elementCount = document.getElementById('clicker__counter');
 const elementSpeed = document.getElementById('clicker__speed');
 function onclick(clicker){
     elementCount.innerText = clicker.count;
-    let k = clicker.count % 2 === 0 ? -1 : 1;
     elementSpeed.innerText = clicker.speed.toFixed(2);
 }
 clicker = new CookieClicker(elementTarget, onclick);
