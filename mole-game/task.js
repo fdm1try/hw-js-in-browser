@@ -10,7 +10,6 @@ const gameOver = (title) => {
 }
 
 document.onclick = function(event){
-    console.log(event)
     if (event.target.classList.contains('hole')){
         tryCount++;
         if (event.target.classList.contains('hole_has-mole')){
