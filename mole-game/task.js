@@ -3,6 +3,11 @@ const elementLostCount = document.getElementById('lost');
 
 let tryCount = 0;
 let deadCount = 0;
+const gameOver = (title) => {
+    tryCount = 0;
+    deadCount = 0;
+    alert(title);
+}
 
 document.onclick = function(event){
     console.log(event)
@@ -11,17 +16,11 @@ document.onclick = function(event){
         if (event.target.classList.contains('hole_has-mole')){
             deadCount++;
         }
-        let lostCount = tryCount - deadCount;
-        if (lostCount > 4) {
-            alert('Поражение...');
-            tryCount = 0;
-            deadCount = 0;
-        } else if (deadCount > 9) {
-            alert('Победа!');            
-            tryCount = 0;
-            deadCount = 0;
-        }
+        if (tryCount - deadCount > 4)
+            gameOver('Поражение...');
+        else if (deadCount > 9)
+            gameOver('Победа!');
         elementDeadCount.innerText = deadCount;
-        elementLostCount.innerText = lostCount;
+        elementLostCount.innerText = tryCount - deadCount;
     }
 }
