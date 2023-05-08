@@ -1,6 +1,6 @@
 class CookieClicker {
     #count;
-    #startTime;
+    #speed = 0;
     #width;
     #height;
 
@@ -8,9 +8,12 @@ class CookieClicker {
         this.#count = 0;
         this.#width = element.width;
         this.#height = element.height;
-        this.#startTime = Date.now();
+        let lastClickTime = Date.now();
         element.onclick = () => {
             this.#count++;
+            let now = Date.now();
+            this.#speed = 1 / ((now - lastClickTime) / 1000);
+            lastClickTime = now;
             let k = this.#count % 2 === 0 ? -1 : 1;
             element.width = this.#width + this.#width * 0.04 * k;
             element.height = this.#height + this.#height * 0.04 * k;
@@ -21,7 +24,7 @@ class CookieClicker {
     }
 
     get speed(){
-        return this.#count / ((Date.now() - this.#startTime) / 1000);
+        return this.#speed;
     }
 
     get count(){
