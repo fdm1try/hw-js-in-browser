@@ -32,7 +32,7 @@ class App {
     }
 
     addTask(){
-        if (!this.validateInput()) return alert('Название задаче не корректно');
+        if (!this.validateInput()) return alert('Название задачи не корректно');
         let title = this.input.value.trim();
         this.input.value = '';
         let task = new Task(title);
